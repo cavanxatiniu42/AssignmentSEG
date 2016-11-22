@@ -239,4 +239,15 @@ public class Query {
     else
       return null;
   }
+
+  /**
+   *
+   * @return an iterator of the query matches or null if no matches.
+     */
+  public Iterator matchIterator (){
+    if (matches.isEmpty()){
+      return null;
+    }
+    return matches.iterator();
+  }
 }

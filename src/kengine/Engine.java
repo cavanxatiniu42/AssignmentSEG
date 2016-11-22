@@ -1,5 +1,7 @@
 package kengine;
 
+import jdk.nashorn.internal.objects.NativeUint8Array;
+
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Vector;
@@ -168,5 +170,31 @@ public class Engine {
    */
   public String getWordTableAsString() {
     return wt.toString();
+  }
+
+  /**
+   * @effects
+   * if d is null
+   * throws NullPointerException
+   * else
+   * add d to this.tt and this.wt using their
+   * respective methods. If this.q is not null then
+   * update this.q to contain any new matching
+   * documents. Return this.q
+   */
+  public Query addDoc (Doc d) throws NullPointerException{
+   if (d == null){
+     throw new NullPointerException("Document d is empty");
+   }
+   Hashtable hashtable = wt.addDoc(d);
+   this.tt.addDoc(d);
+    this.wt.addDoc(d);
+    if (this.q != null){
+      q.addDoc(d,hashtable);
+    }
+    if (this.q == null){
+      this.q = new Query();
+    }
+    return q;
   }
 }

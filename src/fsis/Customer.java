@@ -3,7 +3,7 @@ package fsis;
 /**
  * Created by Thu Thuy Nguyen on 13/11/2016.
  */
-public class Customer implements Comparable{
+public class Customer implements Comparable, Document{
     private int id;
     private String name;
     private String phoneNumber;
@@ -85,6 +85,16 @@ public class Customer implements Comparable{
 
         Customer v = (Customer) o;
         return this.name.compareTo(v.name);
+    }
+
+    @Override
+    public String toHtmlDoc() {
+        return "<html>" +
+                "<head>" +
+                "<title>Customer: " + this.getName() + "</title>" +
+                "</head>" +
+                "<body>" + this.id + " " + this.name + " " + this.phoneNumber + " " + this.address + "</body>" +
+                "</html>";
     }
 }
 

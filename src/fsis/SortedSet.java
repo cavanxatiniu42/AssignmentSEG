@@ -46,6 +46,9 @@ public class SortedSet {
         return null;
     }
 
+    public int size(){
+        return elements.size();
+    }
     @Override
     public String toString() {
         if (elements.size()==0){
